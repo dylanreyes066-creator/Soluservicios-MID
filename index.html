@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluservicios MID</title>
+
+  <!-- ══ FAVICON ══ -->
+  <link rel="icon"             type="image/x-icon"   href="favicon.ico">
+  <link rel="icon"             type="image/svg+xml"  href="favicon.svg">
+  <link rel="icon"             type="image/png" sizes="96x96"   href="favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180"                  href="apple-touch-icon.png">
+  <link rel="icon"             type="image/png" sizes="192x192" href="web-app-manifest-192x192.png">
+  <link rel="icon"             type="image/png" sizes="512x512" href="web-app-manifest-512x512.png">
+  <!-- ══════════════ -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh); }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 pb-16">
+
+<!-- HERO ORIGINAL + NIEVE -->
+<section class="relative bg-gradient-to-r from-blue-700 to-blue-500 text-white p-12 text-center overflow-hidden">
+
+  <div id="snow"></div>
+
+  <h1 class="text-4xl md:text-5xl font-bold mb-4 relative z-10">Soluservicios MID</h1>
+  <p class="text-lg md:text-xl mb-6 relative z-10">Solucionamos tus problemas del hogar en Mérida en una sola visita y realizamos todo servicio que puedas imaginar</p>
+  <a href="https://wa.me/529991640374?text=Hola,%20vi%20tu%20página%20y%20necesito%20un%20servicio" class="bg-green-400 text-blue-700 font-semibold px-8 py-3 rounded-2xl shadow-lg hover:scale-105 transition relative z-10">
+    Cotiza por WhatsApp
+  </a>
+</section>
+
+<!-- SERVICIOS -->
+<section class="p-10 grid md:grid-cols-4 gap-6">
+
+  <a href="aire.html" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+    <p class="text-3xl">❄️</p>
+    <h2 class="text-lg font-semibold mb-2">Aires Acondicionados</h2>
+    <p>Instalación, mantenimiento y reparación.</p>
+  </a>
+
+  <a href="plomeria.html" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+    <p class="text-3xl">🚰</p>
+    <h2 class="text-lg font-semibold mb-2">Plomería</h2>
+    <p>Fugas, instalaciones y mantenimiento.</p>
+  </a>
+
+  <a href="electricidad.html" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+    <p class="text-3xl">⚡</p>
+    <h2 class="text-lg font-semibold mb-2">Electricidad</h2>
+    <p>Instalaciones eléctricas y reparaciones.</p>
+  </a>
+
+  <a href="mantenimiento.html" class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2">
+    <p class="text-3xl">🛠️</p>
+    <h2 class="text-lg font-semibold mb-2">Mantenimiento General</h2>
+    <p>Soluciones completas para hogar y negocio.</p>
+  </a>
+
+  <div onclick="abrirTrabajos()"
+       class="col-span-full bg-white px-6 py-4 rounded-2xl shadow hover:shadow-xl hover:-translate-y-1 transition cursor-pointer flex items-center gap-4">
+    <p class="text-3xl">✅</p>
+    <div>
+      <h2 class="font-semibold text-lg">Nuestros Trabajos</h2>
+      <p class="text-sm text-gray-600">Conoce nuestros resultados reales</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- POR QUÉ ELEGIRNOS -->
+<section class="bg-white p-10 text-center">
+  <h2 class="text-3xl font-bold mb-6">¿Por qué elegirnos?</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <div>
+      <p class="text-4xl">⚡</p>
+      <h3 class="font-semibold mt-2">Servicio Rápido</h3>
+      <p class="mb-3">Atendemos tus necesidades con rapidez y eficiencia.</p>
+      <button onclick="toggleInfo('rapido')" class="text-blue-600 font-semibold hover:underline">Ver más →</button>
+      <div id="rapido" class="hidden mt-3 text-sm text-gray-700 space-y-2">
+        <p>Contamos con tiempos de respuesta ágiles y organización eficiente para resolver tus problemas sin demoras innecesarias.</p>
+        <p>Nos enfocamos en brindarte soluciones inmediatas sin comprometer la calidad del trabajo.</p>
+        <p class="font-medium text-gray-900">Rapidez con responsabilidad, para que puedas volver a tu rutina sin interrupciones.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-4xl">🛠️</p>
+      <h3 class="font-semibold mt-2">Solución Integral</h3>
+      <p class="mb-3">Un solo proveedor para todas tus necesidades.</p>
+      <button onclick="toggleInfo('integral')" class="text-blue-600 font-semibold hover:underline">Ver más →</button>
+      <div id="integral" class="hidden mt-3 text-sm text-gray-700 space-y-2">
+        <p>Desde aire acondicionado hasta plomería y electricidad, nos encargamos de todo con un enfoque profesional.</p>
+        <p>Evita contratar múltiples proveedores: con nosotros tienes una solución centralizada y confiable.</p>
+        <p class="font-medium text-gray-900">Simplificamos tus servicios para ahorrarte tiempo, dinero y complicaciones.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="text-4xl">💰</p>
+      <h3 class="font-semibold mt-2">Precios Justos</h3>
+      <p class="mb-3">En Soluservicios MID entendemos que un buen servicio no se mide solo por el precio, sino por la tranquilidad que ofrece.</p>
+      <button onclick="toggleInfo('precios')" class="text-blue-600 font-semibold hover:underline">Ver más →</button>
+      <div id="precios" class="hidden mt-3 text-sm text-gray-700 space-y-2">
+        <p>Más que una solución temporal, brindamos resultados duraderos respaldados por mano de obra calificada y materiales de alta calidad.</p>
+        <p>Sabemos que optar por lo más económico puede derivar en fallas constantes y gastos innecesarios a largo plazo.</p>
+        <p>Nuestro enfoque es hacer las cosas bien desde la primera vez, evitando retrabajos y visitas repetidas.</p>
+        <p class="font-medium text-gray-900">Cada servicio que realizamos está pensado para ofrecer eficiencia, seguridad y garantía, asegurando una verdadera relación calidad–precio que protege tu inversión.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STICKERS CIRCULARES -->
+<section class="max-w-5xl mx-auto px-6 py-12">
+  <div class="flex flex-col gap-10 items-center">
+
+    <div class="flex flex-col items-center text-center group">
+      <div class="w-28 h-28 rounded-full bg-blue-600 text-white flex items-center justify-center text-5xl shadow-xl group-hover:scale-110 transition duration-300">🏷️</div>
+      <h3 class="mt-4 text-xl font-bold text-gray-800">Trabajamos con todo tipo de marcas</h3>
+      <p class="mt-2 text-gray-600 max-w-md">Atendemos distintos equipos, modelos y sistemas con servicio profesional y especializado.</p>
+    </div>
+
+    <div class="flex flex-col items-center text-center group">
+      <div class="w-28 h-28 rounded-full bg-blue-600 text-white flex items-center justify-center text-5xl shadow-xl group-hover:scale-110 transition duration-300">🏢</div>
+      <h3 class="mt-4 text-xl font-bold text-gray-800">Servicios en cualquier tipo de edificio</h3>
+      <p class="mt-2 text-gray-600 max-w-md">Trabajamos en hogares, oficinas, negocios, departamentos y espacios comerciales.</p>
+    </div>
+
+    <div class="flex flex-col items-center text-center group">
+      <div class="w-28 h-28 rounded-full bg-blue-600 text-white flex items-center justify-center text-5xl shadow-xl group-hover:scale-110 transition duration-300">🛡️</div>
+      <h3 class="mt-4 text-xl font-bold text-gray-800">Trabajos limpios y seguros</h3>
+      <p class="mt-2 text-gray-600 max-w-md">Cuidamos cada detalle para ofrecer seguridad, limpieza y resultados de calidad.</p>
+    </div>
+  
+    <div class="flex flex-col items-center text-center group">
+      <div class="w-28 h-28 rounded-full bg-blue-600 text-white flex items-center justify-center text-5xl shadow-xl group-hover:scale-110 transition duration-300">📍</div>
+      <h3 class="mt-4 text-xl font-bold text-gray-800">Alta Cobertura</h3>
+      <p class="mt-2 text-gray-600 max-w-md">Llegamos hasta donde estés.</p>
+    </div>
+    
+    <div class="flex flex-col items-center text-center group">
+      <div class="w-28 h-28 rounded-full bg-blue-600 text-white flex items-center justify-center text-5xl shadow-xl group-hover:scale-110 transition duration-300">⭐</div>
+      <h3 class="mt-4 text-xl font-bold text-gray-800">Trabajos Protegidos</h3>
+      <p class="mt-2 text-gray-600 max-w-md">Contamos con garantía en nuestros servicios.</p>
+    </div>
+
+    <div class="flex flex-col items-center text-center group">
+      <div class="w-28 h-28 rounded-full bg-blue-600 text-white flex items-center justify-center text-5xl shadow-xl group-hover:scale-110 transition duration-300">⏰</div>
+      <h3 class="mt-4 text-xl font-bold text-gray-800">24hrs</h3>
+      <p class="mt-2 text-gray-600 max-w-md">Contamos con servicio las 24 horas del día.</p>
+    </div>
+    
+    <div class="flex flex-col items-center text-center group">
+      <div class="w-28 h-28 rounded-full bg-red-600 text-white flex items-center justify-center text-5xl shadow-xl group-hover:scale-110 transition duration-300">🚨</div>
+      <h3 class="mt-4 text-xl font-bold text-gray-800">Atendemos emergencias</h3>
+      <p class="mt-2 text-gray-600 max-w-md">Estamos disponibles para atender situaciones urgentes con rapidez y profesionalismo.</p>
+    </div>
+
+  </div>
+
+  <div class="flex justify-center mt-8">
+    <a href="tel:+529991640374"
+       class="bg-red-600 text-white px-8 py-4 rounded-full shadow-lg flex items-center gap-3 text-lg font-semibold hover:bg-red-700 hover:scale-105 transition">
+      <span class="text-2xl">📞</span>
+      Llama para un servicio de EMERGENCIA
+    </a>
+  </div>
+</section>
+
+<script>
+function toggleInfo(id) {
+  const sections = ['rapido','integral','precios'];
+  sections.forEach(sec => {
+    const el = document.getElementById(sec);
+    if (sec === id) { el.classList.toggle('hidden'); } else { el.classList.add('hidden'); }
+  });
+}
+</script>
+
+<!-- SCRIPT NIEVE -->
+<script>
+const snowContainer = document.getElementById('snow');
+for (let i = 0; i < 120; i++) {
+  const flake = document.createElement('div');
+  flake.className = 'snowflake'; flake.innerHTML = '•';
+  flake.style.left = Math.random() * 100 + 'vw';
+  flake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  flake.style.fontSize = (Math.random() * 6 + 4) + 'px';
+  snowContainer.appendChild(flake);
+}
+</script>
+
+<!-- TRANSICIÓN SUAVE -->
+<style>
+  body { animation: fadeIn 0.5s ease-in; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<!-- ════════ SECCIÓN TRABAJOS ════════
+  Para agregar más trabajos edita el array "trabajos":
+    { tipo: "img",   src: "foto.jpg",  desc: "Descripción" }
+    { tipo: "video", src: "clip.mp4",  desc: "Descripción" }
+-->
+<section id="trabajos" class="hidden fixed top-0 left-0 w-full h-full bg-gray-100 overflow-y-auto p-10 z-50">
+
+  <div class="flex justify-between items-center mb-6 max-w-sm mx-auto">
+    <h2 class="text-3xl font-bold">Trabajos Realizados</h2>
+    <button onclick="cerrarTrabajos()"
+      class="bg-white text-gray-800 font-semibold px-5 py-2 rounded-full shadow hover:shadow-md hover:bg-gray-200 transition flex items-center gap-2">
+      ✕ Cerrar
+    </button>
+  </div>
+
+  <div class="relative max-w-sm mx-auto">
+    <button onclick="mover(-1)"
+      class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow p-2 rounded-full z-10">◀</button>
+    <div class="overflow-hidden rounded-2xl shadow">
+      <div id="slider" class="flex transition-transform duration-500"></div>
+    </div>
+    <button onclick="mover(1)"
+      class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow p-2 rounded-full z-10">▶</button>
+    <div id="dots" class="flex justify-center gap-2 mt-3"></div>
+  </div>
+
+</section>
+
+<script>
+/* ── AGREGA TUS TRABAJOS AQUÍ ── */
+const trabajos = [
+  { tipo: "video", src: "trabajo10.mp4",   desc: "El refrigerador no enfriaba. Reemplazo de sensores y solución del problema." },
+  { tipo: "video", src: "trabajo11.mp4",   desc: "Fabricación de dos bases para una sujeción segura del evaporador." },
+  { tipo: "video", src: "trabajo5.mp4",   desc: "Limpieza profesional y profunda de tinaco." },
+  { tipo: "video", src: "trabajo7.mp4",   desc: "Reparación de tarjeta de control de aire acondicionado." },
+  { tipo: "video", src: "trabajo8.mp4",   desc: "Reemplazo de mordazas de medidor para voltaje." },
+  { tipo: "video", src: "trabajo9.mp4",   desc: "Cambio de vástago y llaves de regadera." },
+  { tipo: "video", src: "trabajo3.mp4",   desc: "Limpieza y mantenimiento de aire acondicionado." },
+  { tipo: "video", src: "trabajo6.mp4",   desc: "Corrección de fuga, cambio de tubería, vacío profesional y recarga de gas mas limpieza." },
+  { tipo: "video", src: "trabajo4.mp4",   desc: "" },
+  { tipo: "video", src: "trabajo2.mp4", desc: "Pintura profesional de tanque estacionario de gas."             },
+  /* Ejemplo para agregar más:
+  { tipo: "img",   src: "img3.jpg",   desc: "Instalación eléctrica." },
+  { tipo: "video", src: "video2.mp4", desc: "Destapado de drenaje."  },
+  */
+];
+
+let sliderIndex = 0;
+
+function buildSlider() {
+  const slider = document.getElementById('slider');
+  const dots   = document.getElementById('dots');
+  slider.innerHTML = ''; dots.innerHTML = '';
+  trabajos.forEach((t, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'min-w-full';
+    slide.innerHTML = t.tipo === 'img'
+      ? `<img src="${t.src}" class="w-full aspect-[9/16] object-cover"><div class="p-4 bg-white text-center"><p>${t.desc}</p></div>`
+      : `<video class="w-full aspect-[9/16] object-cover" controls><source src="${t.src}"></video><div class="p-4 bg-white text-center"><p>${t.desc}</p></div>`;
+    slider.appendChild(slide);
+    const dot = document.createElement('div');
+    dot.className = `h-2 rounded-full transition-all duration-300 cursor-pointer ${i === 0 ? 'w-4 bg-blue-600' : 'w-2 bg-gray-300'}`;
+    dot.onclick = () => irA(i);
+    dots.appendChild(dot);
+  });
+}
+
+function irA(i) {
+  document.querySelectorAll('#slider video').forEach(v => {
+    v.pause();
+    v.muted = false;
+  });
+
+  sliderIndex = i;
+  document.getElementById('slider').style.transform = `translateX(-${i * 100}%)`;
+  document.querySelectorAll('#dots div').forEach((d, j) => {
+    d.className = `h-2 rounded-full transition-all duration-300 cursor-pointer ${j === i ? 'w-4 bg-blue-600' : 'w-2 bg-gray-300'}`;
+  });
+}
+
+function mover(dir) { irA((sliderIndex + dir + trabajos.length) % trabajos.length); }
+
+function abrirTrabajos() {
+  buildSlider(); sliderIndex = 0;
+  document.getElementById('trabajos').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarTrabajos() {
+  document.getElementById('trabajos').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+</script>
+
+<!-- BARRA INFERIOR ANIMADA -->
+<section class="fixed bottom-0 left-0 w-full bg-gradient-to-r from-blue-700 to-blue-500 text-white shadow-2xl z-50 overflow-hidden">
+  <div class="py-3 text-center text-sm md:text-base font-semibold relative h-12 flex items-center justify-center">
+    <p id="frase" class="absolute transition-all duration-700 opacity-100">⚡ Atendemos emergencias</p>
+  </div>
+</section>
+
+<script>
+const frases = ["⚡ Atendemos emergencias","⏰ servicio las 24hrs","📍 Llegamos hasta donde estés","🛡️ Servicios con garantía"];
+let indexFrase = 0;
+const fraseElemento = document.getElementById("frase");
+setInterval(() => {
+  fraseElemento.classList.add("opacity-0");
+  setTimeout(() => {
+    indexFrase = (indexFrase + 1) % frases.length;
+    fraseElemento.innerHTML = frases[indexFrase];
+    fraseElemento.classList.remove("opacity-0");
+  }, 700);
+}, 5000);
+</script>
+
+<!-- REDES SOCIALES -->
+<div class="fixed left-3 bottom-14 flex flex-col gap-2 z-40">
+
+  <a href="https://www.tiktok.com/@soluservicios.mid?_r=1&_t=ZS-96QdM1o2NNt" target="_blank" class="w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-lg hover:scale-110 transition">
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" class="w-5 h-5">
+  </a>
+
+  <a href="https://www.instagram.com/soluservicios.mid?igsh=aDN4OXE3dWx6emJl" target="_blank" class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center shadow-lg hover:scale-110 transition">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="w-5 h-5">
+  </a>
+
+  <a href="https://www.facebook.com/share/1EkhZojU5D/" target="_blank" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center shadow-lg hover:scale-110 transition">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="w-5 h-5">
+  </a>
+
+</div>
+
+<!-- DUDAS / FAQ -->
+<section class="max-w-3xl mx-auto px-6 py-14">
+  <h2 class="text-3xl font-bold text-center mb-10">Dudas</h2>
+  <div class="space-y-4">
+
+    <div class="bg-white rounded-xl shadow p-5 cursor-pointer hover:shadow-lg transition" onclick="toggleFAQ(this)">
+      <div class="flex justify-between items-center">
+        <h3 class="font-semibold text-lg">¿Cuál es la cobertura de Soluservicios MID?</h3>
+        <span class="text-xl">+</span>
+      </div>
+      <p class="mt-3 text-gray-600 hidden">Atendemos servicios en toda la ciudad de Mérida y sus alrededores. Si estás más lejos, también podemos apoyarte con gusto; solo considera que podría aplicarse un cargo adicional por desplazamiento.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 cursor-pointer hover:shadow-lg transition" onclick="toggleFAQ(this)">
+      <div class="flex justify-between items-center">
+        <h3 class="font-semibold text-lg">¿Qué tipo de equipos de aire acondicionado trabaja Soluservicios MID?</h3>
+        <span class="text-xl">+</span>
+      </div>
+      <p class="mt-3 text-gray-600 hidden">¡Prácticamente todos! Desde equipos residenciales tipo minisplit hasta sistemas industriales como tipo paquete, chiller o VRF. Además, trabajamos con todas las marcas, así que podemos ayudarte sin problema.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 cursor-pointer hover:shadow-lg transition" onclick="toggleFAQ(this)">
+      <div class="flex justify-between items-center">
+        <h3 class="font-semibold text-lg">¿Los servicios de Soluservicios MID cuentan con garantía?</h3>
+        <span class="text-xl">+</span>
+      </div>
+      <p class="mt-3 text-gray-600 hidden">¡Claro que sí! Todos nuestros servicios incluyen días de garantía a partir de la fecha de atención. Esta garantía no cubre desperfectos en refacciones ni piezas.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 cursor-pointer hover:shadow-lg transition" onclick="toggleFAQ(this)">
+      <div class="flex justify-between items-center">
+        <h3 class="font-semibold text-lg">¿Qué es una visita técnica?</h3>
+        <span class="text-xl">+</span>
+      </div>
+      <p class="mt-3 text-gray-600 hidden">Es una revisión para evaluar el estado de tus equipos. Detectamos fallas, riesgos o problemas. Y lo mejor: si contratas mantenimiento, reparación o instalación, ¡la visita técnica no tiene costo!</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-5 cursor-pointer hover:shadow-lg transition" onclick="toggleFAQ(this)">
+      <div class="flex justify-between items-center">
+        <h3 class="font-semibold text-lg">¿Qué incluye una instalación básica?</h3>
+        <span class="text-xl">+</span>
+      </div>
+      <p class="mt-3 text-gray-600 hidden">Aplica para minisplit nuevos con kit incluido. Si se requieren materiales adicionales, te informamos antes con el costo detallado. Tú siempre tienes la última palabra.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-16 px-6">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Soluciones reales para cualquier problema</h2>
+    <p class="text-lg leading-relaxed mb-6">
+      En <span class="font-semibold">Soluservicios MID</span> realizamos todo tipo de servicios
+      en aire acondicionado, electricidad, plomería y mantenimiento general.
+      No importa el tipo de equipo, instalación o falla, tenemos la experiencia
+      para solucionarlo de forma rápida, segura y profesional.
+    </p>
+    <p class="text-lg leading-relaxed mb-8">
+      ¿Tu equipo no funciona como debería? ¿Hace ruidos, no enfría, presenta fallas o tienes problemas con algún aparato eléctrico u otro sistema?
+      No te preocupes. Puedes solicitar una <span class="font-semibold">visita técnica</span> para revisar tu sistema,
+      detectar el problema y darte una solución clara desde el inicio.
+    </p>
+    <a href="https://wa.me/529991640374?text=Hola,%20necesito%20una%20revisión%20técnica"
+       class="inline-block bg-white text-blue-700 font-bold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition">
+       Solicitar visita tecnica por 400MXN ahora
+    </a>
+    <p class="mt-6 text-sm opacity-90">Atención rápida • Diagnóstico profesional • Servicio garantizado</p>
+  </div>
+</section>
+
+<script>
+function toggleFAQ(element) {
+  const text = element.querySelector("p");
+  const icon = element.querySelector("span");
+  if (text.classList.contains("hidden")) { text.classList.remove("hidden"); icon.innerHTML = "−"; }
+  else { text.classList.add("hidden"); icon.innerHTML = "+"; }
+}
+</script>
+
+<!-- LOGO SM -->
+<div class="fixed top-4 left-4 z-50">
+  <div class="text-3xl md:text-4xl font-bold
+              bg-gradient-to-r from-white to-blue-400
+              bg-clip-text text-transparent
+              drop-shadow-[0_3px_8px_rgba(0,0,0,0.7)]
+              opacity-90 hover:opacity-100 transition">
+    𝕊𝕄
+  </div>
+</div>
+
+<!-- INTRO CINEMÁTICA -->
+<div id="intro" class="fixed inset-0 flex items-center justify-center z-[9999] overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#020d1f] via-[#0a1e3d] to-[#0d2a5e]"></div>
+  <div id="snowIntro"></div>
+
+  <div id="introContent" class="relative text-center px-6 opacity-0 scale-95" style="transition: all 0.8s ease;">
+
+    <div style="display:flex; justify-content:center; gap:18px; margin-bottom:18px;">
+
+      <svg width="64" height="72" viewBox="0 0 64 72">
+        <defs>
+          <linearGradient id="hexG1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a1e4d"/><stop offset="100%" stop-color="#1a3fa0"/></linearGradient>
+          <filter id="glow1"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <polygon points="32,2 62,18 62,54 32,70 2,54 2,18" fill="url(#hexG1)" stroke="#3b82f6" stroke-width="2.5" filter="url(#glow1)"/>
+        <polygon points="32,6 58,21 58,51 32,66 6,51 6,21" fill="none" stroke="#1d4ed8" stroke-width="1" opacity="0.5"/>
+        <polygon points="36,18 26,38 33,38 28,56 42,32 34,32 40,18" fill="white" opacity="0.95"/>
+      </svg>
+
+      <svg width="64" height="72" viewBox="0 0 64 72">
+        <defs>
+          <linearGradient id="hexG2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a1e4d"/><stop offset="100%" stop-color="#1a3fa0"/></linearGradient>
+          <filter id="glow2"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <polygon points="32,2 62,18 62,54 32,70 2,54 2,18" fill="url(#hexG2)" stroke="#3b82f6" stroke-width="2.5" filter="url(#glow2)"/>
+        <polygon points="32,6 58,21 58,51 32,66 6,51 6,21" fill="none" stroke="#1d4ed8" stroke-width="1" opacity="0.5"/>
+        <g transform="translate(32,36)" fill="white" opacity="0.95">
+          <circle r="5" fill="none" stroke="white" stroke-width="2.5"/><circle r="2" fill="white"/>
+          <g stroke="white" stroke-width="3" stroke-linecap="round">
+            <line x1="0" y1="-10" x2="0" y2="-7"/><line x1="0" y1="7" x2="0" y2="10"/>
+            <line x1="-10" y1="0" x2="-7" y2="0"/><line x1="7" y1="0" x2="10" y2="0"/>
+            <line x1="-7.07" y1="-7.07" x2="-5" y2="-5"/><line x1="5" y1="5" x2="7.07" y2="7.07"/>
+            <line x1="7.07" y1="-7.07" x2="5" y2="-5"/><line x1="-5" y1="5" x2="-7.07" y2="7.07"/>
+          </g>
+        </g>
+      </svg>
+
+      <svg width="64" height="72" viewBox="0 0 64 72">
+        <defs>
+          <linearGradient id="hexG3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a1e4d"/><stop offset="100%" stop-color="#1a3fa0"/></linearGradient>
+          <filter id="glow3"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <polygon points="32,2 62,18 62,54 32,70 2,54 2,18" fill="url(#hexG3)" stroke="#3b82f6" stroke-width="2.5" filter="url(#glow3)"/>
+        <polygon points="32,6 58,21 58,51 32,66 6,51 6,21" fill="none" stroke="#1d4ed8" stroke-width="1" opacity="0.5"/>
+        <g transform="translate(32,36)" stroke="white" stroke-width="2.2" stroke-linecap="round" opacity="0.95">
+          <line x1="0" y1="-13" x2="0" y2="13"/>
+          <line x1="-11.3" y1="-6.5" x2="11.3" y2="6.5"/><line x1="11.3" y1="-6.5" x2="-11.3" y2="6.5"/>
+          <line x1="-4" y1="-9" x2="0" y2="-13"/><line x1="4" y1="-9" x2="0" y2="-13"/>
+          <line x1="-4" y1="9" x2="0" y2="13"/><line x1="4" y1="9" x2="0" y2="13"/>
+          <line x1="-13" y1="-2" x2="-9.3" y2="-5.5"/><line x1="-13" y1="2" x2="-9.3" y2="5.5"/>
+          <line x1="13" y1="-2" x2="9.3" y2="-5.5"/><line x1="13" y1="2" x2="9.3" y2="5.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <svg width="100%" viewBox="0 0 380 210" style="max-width:420px; display:block; margin:0 auto;">
+      <defs>
+        <linearGradient id="sGrad" x1="0%" y1="0%" x2="5%" y2="100%">
+          <stop offset="0%"   stop-color="#f0f8ff"/>
+          <stop offset="18%"  stop-color="#c8dff5"/>
+          <stop offset="38%"  stop-color="#7aaee0"/>
+          <stop offset="55%"  stop-color="#b8d4f0"/>
+          <stop offset="72%"  stop-color="#d8eaff"/>
+          <stop offset="88%"  stop-color="#8ab8e8"/>
+          <stop offset="100%" stop-color="#cce0ff"/>
+        </linearGradient>
+        <linearGradient id="mGrad" x1="0%" y1="0%" x2="5%" y2="100%">
+          <stop offset="0%"   stop-color="#90c8ff"/>
+          <stop offset="20%"  stop-color="#4a90e2"/>
+          <stop offset="40%"  stop-color="#1a5fcc"/>
+          <stop offset="58%"  stop-color="#2271e0"/>
+          <stop offset="75%"  stop-color="#1040a0"/>
+          <stop offset="90%"  stop-color="#3070d0"/>
+          <stop offset="100%" stop-color="#60a5fa"/>
+        </linearGradient>
+        <linearGradient id="smShine" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="rgba(255,255,255,0)"/>
+          <stop offset="42%"  stop-color="rgba(255,255,255,0.55)"/>
+          <stop offset="58%"  stop-color="rgba(255,255,255,0.08)"/>
+          <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+        </linearGradient>
+        <linearGradient id="edgeGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%"   stop-color="rgba(150,210,255,0.9)"/>
+          <stop offset="50%"  stop-color="rgba(80,150,255,0.3)"/>
+          <stop offset="100%" stop-color="rgba(150,210,255,0.8)"/>
+        </linearGradient>
+        <clipPath id="smClip">
+          <rect x="0" y="0" width="380" height="210"/>
+        </clipPath>
+      </defs>
+
+      <ellipse cx="190" cy="105" rx="170" ry="90" fill="rgba(30,80,200,0.13)"/>
+      <text x="102" y="178" text-anchor="middle" font-family="'Arial Black','Impact',sans-serif" font-weight="900" font-size="172" letter-spacing="-8" fill="rgba(0,5,20,0.6)" transform="translate(3,4)">S</text>
+      <text x="282" y="178" text-anchor="middle" font-family="'Arial Black','Impact',sans-serif" font-weight="900" font-size="172" letter-spacing="-8" fill="rgba(0,5,20,0.6)" transform="translate(3,4)">M</text>
+      <text x="100" y="175" text-anchor="middle" font-family="'Arial Black','Impact',sans-serif" font-weight="900" font-size="172" letter-spacing="-8" fill="url(#sGrad)">S</text>
+      <text x="100" y="175" text-anchor="middle" font-family="'Arial Black','Impact',sans-serif" font-weight="900" font-size="172" letter-spacing="-8" fill="none" stroke="url(#edgeGlow)" stroke-width="1" opacity="0.7">S</text>
+      <text x="280" y="175" text-anchor="middle" font-family="'Arial Black','Impact',sans-serif" font-weight="900" font-size="172" letter-spacing="-8" fill="url(#mGrad)">M</text>
+      <text x="280" y="175" text-anchor="middle" font-family="'Arial Black','Impact',sans-serif" font-weight="900" font-size="172" letter-spacing="-8" fill="none" stroke="url(#edgeGlow)" stroke-width="1" opacity="0.55">M</text>
+      <g clip-path="url(#smClip)">
+        <text x="100" y="175" text-anchor="middle" font-family="'Arial Black','Impact',sans-serif" font-weight="900" font-size="172" letter-spacing="-8" fill="url(#smShine)" opacity="0.6">S</text>
+        <text x="280" y="175" text-anchor="middle" font-family="'Arial Black','Impact',sans-serif" font-weight="900" font-size="172" letter-spacing="-8" fill="url(#smShine)" opacity="0.45">M</text>
+      </g>
+      <rect x="186" y="18" width="1.5" height="150" fill="rgba(100,180,255,0.25)" rx="1"/>
+    </svg>
+
+    <div style="font-size:clamp(1rem,4vw,1.6rem);font-weight:800;color:white;letter-spacing:3px;margin-top:-8px;text-shadow:0 0 20px rgba(59,130,246,0.5);">
+      SOLUSERVICIOS <span style="color:#60a5fa;">MID</span>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px;font-size:clamp(0.5rem,2vw,0.7rem);letter-spacing:3px;color:#60a5fa;font-weight:600;">
+      <span style="flex:1;max-width:50px;height:1px;background:#3b82f6;display:inline-block;"></span>
+      AIRES ACONDICIONADOS Y MAS
+      <span style="flex:1;max-width:50px;height:1px;background:#3b82f6;display:inline-block;"></span>
+    </div>
+  </div>
+</div>
+
+<style>
+#snowIntro .flake { position:absolute; top:-10px; color:rgba(150,200,255,0.6); animation:fall linear infinite; }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const intro = document.getElementById("intro");
+
+  if(sessionStorage.getItem("introVista")){
+    intro.style.display = "none";
+    return;
+  }
+
+  sessionStorage.setItem("introVista", "true");
+
+  const snowIntro = document.getElementById('snowIntro');
+
+  for (let i = 0; i < 160; i++) {
+    const flake = document.createElement('div');
+    flake.className = 'flake';
+    flake.innerHTML = '•';
+    flake.style.left = Math.random() * 100 + 'vw';
+    flake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    flake.style.fontSize = (Math.random() * 6 + 4) + 'px';
+    snowIntro.appendChild(flake);
+  }
+
+  const content = document.getElementById("introContent");
+
+  setTimeout(() => {
+    content.style.opacity = "1";
+    content.style.transform = "scale(1)";
+  }, 300);
+
+  setTimeout(() => {
+    intro.style.opacity = "0";
+    intro.style.transition = "opacity 1s ease";
+
+    setTimeout(() => {
+      intro.style.display = "none";
+    }, 1000);
+
+  }, 4200);
+});
+</script>
+
+</body>
+</html>

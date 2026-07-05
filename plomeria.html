@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plomería | Soluservicios MID</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{ font-family:'Poppins',sans-serif; }
+#snow{ position:fixed; width:100%; height:100%; top:0; left:0; pointer-events:none; }
+.snowflake{ position:absolute; top:-10px; color:white; opacity:.8; animation:fall linear infinite; }
+@keyframes fall{ to{ transform:translateY(110vh); } }
+</style>
+</head>
+<body class="bg-gray-100 text-gray-800 pb-16">
+<div id="snow"></div>
+<section class="bg-gradient-to-r from-cyan-600 to-blue-500 text-white p-10 text-center shadow-lg">
+  <h1 class="text-4xl font-bold">🚰 Plomería</h1>
+  <p class="mt-3 text-lg">Soluciones rápidas, limpias y duraderas para tu hogar o negocio</p>
+</section>
+<section class="p-10 max-w-2xl mx-auto space-y-8">
+
+</section>
+<section class="px-10 pb-10">
+  <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow p-6 border border-gray-200">
+    <h2 class="text-2xl font-bold mb-3">¿Preguntas o cotización?</h2>
+    <p class="text-gray-600 leading-relaxed">¿Tienes algún problema de plomería? ¡Nosotros lo solucionamos!
+
+Realizamos limpieza de tinacos desde $500 MXN, instalación y reparación de tuberías, detección y reparación de fugas, destapado de drenajes, limpieza de tuberías, instalación y reparación de bombas de agua, llaves, mezcladoras, sanitarios, lavabos, fregaderos, regaderas, calentadores, cisternas y sistemas hidráulicos.
+
+Atendemos desde pequeñas reparaciones hasta proyectos completos de plomería residencial y comercial. Si tienes alguna duda o no sabes cuál es el problema, contáctanos y te asesoraremos.
+
+Sea cual sea la falla, tenemos la solución. También realizamos cotizaciones sin compromiso.
+.</p>
+    <a href="https://wa.me/529991640374?text=Hola,%20quiero%20más%20información" class="mt-6 block bg-green-500 text-white text-center py-3 rounded-xl font-semibold shadow hover:bg-green-600 transition">WhatsApp</a>
+  </div>
+
+<script>
+const snowContainer=document.getElementById('snow');
+for(let i=0;i<120;i++){
+  const flake=document.createElement('div');
+  flake.className='snowflake'; flake.innerHTML='•';
+  flake.style.left=Math.random()*100+'vw';
+  flake.style.animationDuration=(Math.random()*5+5)+'s';
+  flake.style.fontSize=(Math.random()*6+4)+'px';
+  snowContainer.appendChild(flake);
+}
+</script>
+<!-- BARRA INFERIOR ANIMADA -->
+<section class="fixed bottom-0 left-0 w-full bg-gradient-to-r from-cyan-600 to-blue-500 text-white shadow-2xl z-50 overflow-hidden">
+  <div class="py-3 text-center text-sm md:text-base font-semibold relative h-12 flex items-center justify-center">
+    <p id="frase" class="absolute transition-all duration-700 opacity-100">⚡ Atendemos emergencias</p>
+  </div>
+</section>
+
+
+  </div>
+</section>
+<div class="text-center pb-10">
+  <a href="index.html" class="text-cyan-600 font-semibold hover:text-blue-500 transition">
+    &larr; Volver al inicio
+  </a>
+</div>
+
+  </div>
+</section>
+<div class="text-center pb-10">
+    <a href="https://wa.me/529991640374?text=Hola,%20necesito%20una%20revisión%20técnica"
+       class="inline-block bg-white text-cyan-600 font-bold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition">
+       Solicitar visita tecnica por 400MXN ahora
+    </a>
+ </div>
+
+<script>
+const frases = ["⚡ Atendemos emergencias","⏰ servicio las 24hrs","📍 Llegamos hasta donde estés","🛡️ Servicios con garantía"];
+let indexFrase = 0;
+const fraseElemento = document.getElementById("frase");
+setInterval(() => {
+  fraseElemento.classList.add("opacity-0");
+  setTimeout(() => {
+    indexFrase = (indexFrase + 1) % frases.length;
+    fraseElemento.innerHTML = frases[indexFrase];
+    fraseElemento.classList.remove("opacity-0");
+  }, 700);
+}, 5000);
+</script>
+</body>
+</html>
+ 
