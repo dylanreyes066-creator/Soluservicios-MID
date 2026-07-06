@@ -220,8 +220,18 @@ for (let i = 0; i < 120; i++) {
 
 <!-- ════════ SECCIÓN TRABAJOS ════════
   Para agregar más trabajos edita el array "trabajos":
-    { tipo: "img",   src: "foto.jpg",  desc: "Descripción" }
-    { tipo: "video", src: "clip.mp4",  desc: "Descripción" }
+    { tipo: "img",   src: "foto.jpg",              desc: "Descripción" }
+    { tipo: "video", src: "clip.mp4",               desc: "Descripción" }   (video local, archivo subido al hosting)
+    { tipo: "drive", src: "ID_DEL_ARCHIVO_DE_DRIVE", desc: "Descripción" }   (video alojado en Google Drive)
+
+  Cómo sacar el ID_DEL_ARCHIVO_DE_DRIVE:
+    1. En Drive, click derecho al video > "Obtener enlace" / "Compartir"
+    2. Asegúrate de que el acceso diga "Cualquier persona con el enlace" (Lector)
+    3. El link se ve así:
+       https://drive.google.com/file/d/1AbCdEfGhIjKlMnOpQrStUvWxYz/view?usp=sharing
+    4. Copia solo la parte entre "/d/" y "/view" -> ese es el ID:
+       1AbCdEfGhIjKlMnOpQrStUvWxYz
+    5. Pégalo en "src" con tipo: "drive"
 -->
 <section id="trabajos" class="hidden fixed top-0 left-0 w-full h-full bg-gray-100 overflow-y-auto p-10 z-50">
 
@@ -249,19 +259,20 @@ for (let i = 0; i < 120; i++) {
 <script>
 /* ── AGREGA TUS TRABAJOS AQUÍ ── */
 const trabajos = [
-  { tipo: "video", src: "trabajo11.mp4",  desc: "El refrigerador no enfriaba. Reemplazo de sensores y solución del problema." },
-  { tipo: "video", src: "trabajo11.mp4",   desc: "Fabricación de dos bases para una sujeción segura del evaporador." },
-  { tipo: "video", src: "trabajo5.mp4",   desc: "Limpieza profesional y profunda de tinaco." },
-  { tipo: "video", src: "trabajo7.mp4",   desc: "Reparación de tarjeta de control de aire acondicionado." },
-  { tipo: "video", src: "trabajo8.mp4",   desc: "Reemplazo de mordazas de medidor para voltaje." },
-  { tipo: "video", src: "trabajo9.mp4",   desc: "Cambio de vástago y llaves de regadera." },
-  { tipo: "video", src: "trabajo3.mp4",   desc: "Limpieza y mantenimiento de aire acondicionado." },
-  { tipo: "video", src: "trabajo6.mp4",   desc: "Corrección de fuga, cambio de tubería, vacío profesional y recarga de gas mas limpieza." },
-  { tipo: "video", src: "trabajo4.mp4",   desc: "" },
-  { tipo: "video", src: "trabajo2.mp4", desc: "Pintura profesional de tanque estacionario de gas."             },
+  { tipo: "drive", src: "1SOS2Hd2jtqNrKd_1kSJ56BjE4eTPX8_u", desc: "El refrigerador no enfriaba. Reemplazo de sensores y solución del problema." },
+  { tipo: "drive", src: "1SIgg_Si0pt497LI9BX42MBcbg26TSaXT",   desc: "Fabricación de dos bases para una sujeción segura del evaporador." },
+  { tipo: "drive", src: "1KBqJmXayshdyZQPHsKuH10h4OIr7wIxg",   desc: "Limpieza profesional y profunda de tinaco." },
+  { tipo: "drive", src: "1TrPvnyJsTKxsQX62FewbFby5pkaPz3yv",   desc: "Reparación de tarjeta de control de aire acondicionado." },
+  { tipo: "drive", src: "1MWVCMRXwwqUDtVFR4qjGuUulkhDOVtcD",   desc: "Reemplazo de mordazas de medidor para voltaje." },
+  { tipo: "drive", src: "1bi61x5D8TbwjKoPBU6XcYnm9ZNtYqZT4",   desc: "Cambio de vástago y llaves de regadera." },
+  { tipo: "drive", src: "1JsoB-ByC-jDIsW3sobPsbhfyiTyTJOxD",   desc: "Limpieza y mantenimiento de aire acondicionado." },
+  { tipo: "drive", src: "1EM7cMnCV61gBK-ggAR2tsr2WQ1nHLv2e",   desc: "Corrección de fuga, cambio de tubería, vacío profesional y recarga de gas mas limpieza." },
+  { tipo: "drive", src: "1-G84KWetaLXlZ65IzwfJ8T0m97jdYZEW",   desc: "" },
+  { tipo: "drive", src: "1pL2qkc0mFyzoNhhRbLdLNRsNUUomJy6Q", desc: "Pintura profesional de tanque estacionario de gas."             },
   /* Ejemplo para agregar más:
   { tipo: "img",   src: "img3.jpg",   desc: "Instalación eléctrica." },
   { tipo: "video", src: "video2.mp4", desc: "Destapado de drenaje."  },
+  { tipo: "drive", src: "1AbCdEfGhIjKlMnOpQrStUvWxYz", desc: "Video alojado en Google Drive." },
   */
 ];
 
@@ -274,9 +285,15 @@ function buildSlider() {
   trabajos.forEach((t, i) => {
     const slide = document.createElement('div');
     slide.className = 'min-w-full';
-    slide.innerHTML = t.tipo === 'img'
-      ? `<img src="${t.src}" class="w-full aspect-[9/16] object-cover"><div class="p-4 bg-white text-center"><p>${t.desc}</p></div>`
-      : `<video class="w-full aspect-[9/16] object-cover" controls><source src="${t.src}"></video><div class="p-4 bg-white text-center"><p>${t.desc}</p></div>`;
+    let media;
+    if (t.tipo === 'img') {
+      media = `<img src="${t.src}" class="w-full aspect-[9/16] object-cover">`;
+    } else if (t.tipo === 'drive') {
+      media = `<iframe class="w-full aspect-[9/16]" src="https://drive.google.com/file/d/${t.src}/preview" allow="autoplay" allowfullscreen frameborder="0"></iframe>`;
+    } else {
+      media = `<video class="w-full aspect-[9/16] object-cover" controls playsinline><source src="${t.src}"></video>`;
+    }
+    slide.innerHTML = `${media}<div class="p-4 bg-white text-center"><p>${t.desc}</p></div>`;
     slider.appendChild(slide);
     const dot = document.createElement('div');
     dot.className = `h-2 rounded-full transition-all duration-300 cursor-pointer ${i === 0 ? 'w-4 bg-blue-600' : 'w-2 bg-gray-300'}`;
@@ -285,17 +302,39 @@ function buildSlider() {
   });
 }
 
-function irA(i) {
-  document.querySelectorAll('#slider video').forEach(v => {
-    v.pause();
-    v.muted = false;
-  });
+/* Pausa TODO lo que esté sonando/reproduciéndose dentro del slider.
+   - <video> locales: se pausan de forma normal.
+   - <iframe> de Drive: Google no da una API para pausarlos desde afuera,
+     así que la única forma de detenerlos es recargar el iframe. */
+function pausarTodos() {
+  document.querySelectorAll('#slider video').forEach(v => v.pause());
+  document.querySelectorAll('#slider iframe').forEach(f => { f.src = f.src; });
+}
 
+/* Reproduce automáticamente el slide activo (solo aplica a <video> locales,
+   los de Drive requieren que el usuario le dé play manualmente). */
+function reproducirActual(i) {
+  const slide = document.querySelectorAll('#slider > div')[i];
+  if (!slide) return;
+  const video = slide.querySelector('video');
+  if (video) {
+    video.currentTime = 0;
+    video.muted = false;
+    const intento = video.play();
+    if (intento !== undefined) {
+      intento.catch(() => { video.muted = true; video.play(); });
+    }
+  }
+}
+
+function irA(i) {
+  pausarTodos();
   sliderIndex = i;
   document.getElementById('slider').style.transform = `translateX(-${i * 100}%)`;
   document.querySelectorAll('#dots div').forEach((d, j) => {
     d.className = `h-2 rounded-full transition-all duration-300 cursor-pointer ${j === i ? 'w-4 bg-blue-600' : 'w-2 bg-gray-300'}`;
   });
+  reproducirActual(i);
 }
 
 function mover(dir) { irA((sliderIndex + dir + trabajos.length) % trabajos.length); }
@@ -304,9 +343,11 @@ function abrirTrabajos() {
   buildSlider(); sliderIndex = 0;
   document.getElementById('trabajos').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
+  reproducirActual(0);
 }
 
 function cerrarTrabajos() {
+  pausarTodos();
   document.getElementById('trabajos').classList.add('hidden');
   document.body.style.overflow = '';
 }
